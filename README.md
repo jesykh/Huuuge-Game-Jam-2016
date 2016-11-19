@@ -10,6 +10,7 @@ To run in development mode, type:
 git clone https://github.com/jesykh/huuuge-game-jam-2016
 cd huuuge-game-jam-2016
 npm install
+bower install
 npm start
 ```
 
@@ -84,6 +85,8 @@ Electron [can be plugged](https://github.com/atom/electron/blob/master/docs/tuto
 
 To package your app into an installer use command:
 ```
+npm install
+bower install
 npm run release
 ```
 It will start the packaging process for operating system you are running this command on. Ready for distribution file will be outputted to `dist` directory.
