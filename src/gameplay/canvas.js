@@ -1,3 +1,8 @@
+import { Unit } from './unit';
+import { CONTENT_SIZE } from './content_size';
+
+var SIZE = CONTENT_SIZE;
+
 var paper;
 var instance;
 
@@ -11,7 +16,12 @@ function _getInstance() {
 
 function _createInstance() {
   paper = Raphael('game-box__content', '100%', '100%');
-  return {};
+  paper.setViewBox(0, 0, SIZE.width, SIZE.height, true);
+  return {
+    getPaper: function() {
+      return paper;
+    }
+  };
 }
 
 export var Canvas = {
