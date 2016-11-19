@@ -1,6 +1,7 @@
 {
   "name": "huuuge-game-jam-2016",
   "dependencies": {
-    "raphael": "*"
+    "raphael": "*",
+    "jquery": "3.1.*"
   }
 }

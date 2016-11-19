@@ -77,6 +77,8 @@ export default function (name, options) {
 
     win = new BrowserWindow(Object.assign({}, options, state));
 
+    win.setMenuBarVisibility(false);
+    win.setFullScreen(true);
     win.on('close', saveState);
 
     return win;
