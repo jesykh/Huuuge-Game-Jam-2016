@@ -1,0 +1,14 @@
+{
+  "name": "huuuge-game-jam-2016-zosia-jan",
+  "productName": "Huuuge Game Jam 2016",
+  "description": "The Huuuge Game Jam 2016",
+  "version": "0.0.0",
+  "author": "Zosia i Jan <jesykh@gmail.com>",
+  "copyright": "© 2016, Gumby inc.",
+  "homepage": "https://github.com/jesykh/huuuge-game-jam-2016",
+  "license": "MIT",
+  "main": "background.js",
+  "dependencies": {
+    "fs-jetpack": "^0.10.2"
+  }
+}
