@@ -9,9 +9,19 @@
     <script src="helpers/context_menu.js"></script>
     <script src="helpers/external_links.js"></script>
 
-    <script src="app.js"></script>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/raphael/raphael.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
 </head>
 <body>
-Super Space Snake
+    <div class="game-box">
+        <div class="game-box__content" id="game-box__content"></div>
+        <div class="game-box__bar">
+            navbar things
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
