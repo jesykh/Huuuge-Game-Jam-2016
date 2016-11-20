@@ -27,7 +27,7 @@ var snakePaths = ['snake--main', 'snake--light'].map(function(snakeClass) {
         .path(snake.getPath())
         .attr('stroke-linecap', 'round')
         .attr('stroke-linejoin', 'round')
-        .attr('snakeClass', snakeClass);
+        .attr('class', snakeClass);
 });
 _(walls).each(function(wall) {
     canvas.getPaper()
