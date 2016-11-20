@@ -33,4 +33,4 @@ annyang.addCommands({
   right: function() {Commands.addCommand('right')},
   down: function() {Commands.addCommand('down')},
 });
-annyang.start();
+annyang.start({ autoRestart: true, continuous: true });
