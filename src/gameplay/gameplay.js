@@ -30,9 +30,12 @@ var snakePaths = ['snake--main', 'snake--light'].map(function(snakeClass) {
         .attr('class', snakeClass);
 });
 _(walls).each(function(wall) {
-    canvas.getPaper()
-        .path(wall.getPath())
-        .attr('stroke-linecap', 'square');
+    ['wall--main', 'wall--light', 'wall--superlight'].map(function(wallClass) {
+        canvas.getPaper()
+            .path(wall.getPath())
+            .attr('stroke-linecap', 'square')
+            .attr('class', wallClass);
+    });
 });
 
 function handleTick() {
