@@ -9,6 +9,6 @@ VerticalWall.prototype.getPath = function functionName() {
   return 'M' + x + ' ' + y1 + ' ' + 'L' + x + ' ' + y2;;
 }
 VerticalWall.prototype.isCollisioning = function(coordinate) {
-  if (coordinate.x != this.x) { return false; }
-  return (coordinate.y >= this.y) && (coordinate.y <= this.y + length);
+  if (coordinate.x != this.startCoordinate.x) { return false; }
+  return (coordinate.y >= this.startCoordinate.y) && (coordinate.y <= (this.startCoordinate.y + this.length));
 }
