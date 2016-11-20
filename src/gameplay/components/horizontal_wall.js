@@ -6,9 +6,9 @@ HorizontalWall.prototype.getPath = function functionName() {
   var x1 = this.startCoordinate.x;
   var x2 = x1 + this.length;
   var y = this.startCoordinate.y;
-  return 'M' + x1 + ' ' + y + ' ' + 'L' + x2 + ' ' + y;;
+  return 'M' + x1 + ' ' + y + ' L' + x2 + ' ' + y;
 }
 HorizontalWall.prototype.isCollisioning = function(coordinate) {
-  if (coordinate.y != this.y) { return false; }
-  return (coordinate.x >= this.x) && (coordinate.x <= this.x + length);
+  if (coordinate.y != this.startCoordinate.y) { return false; }
+  return (coordinate.x >= this.startCoordinate.x) && (coordinate.x <= (this.startCoordinate.x + this.length));
 }

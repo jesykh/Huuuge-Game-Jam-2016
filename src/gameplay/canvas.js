@@ -1,4 +1,3 @@
-import { Unit } from './unit';
 import { CONTENT_SIZE } from './content_size';
 
 var SIZE = CONTENT_SIZE;
