@@ -1,15 +1,22 @@
 import { Status } from './status';
+var MAX_COMMANDS_COUNT = 3;
+
 
 export var Commands = {
   _commands: [],
   addCommand: function(commandName) {
-    this._commands.push(commandName);
+    if (this.hasFreeSlots()) {
+      this._commands.push(commandName);
+    }
   },
   popCommand: function() {
     return this._commands.shift();
   },
   hasCommands: function() {
     return this._commands.length > 0;
+  },
+  hasFreeSlots: function() {
+    return this._commands.length < MAX_COMMANDS_COUNT;
   }
 }
 

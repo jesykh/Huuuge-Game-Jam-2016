@@ -1,4 +1,5 @@
 import { DisplaySizes } from './display_sizes';
+import { CONTENT_SIZE } from './content_size';
 import { Canvas } from './canvas';
 import { Collisions } from './components/collisions';
 import { Snake } from './components/snake';
@@ -6,6 +7,8 @@ import { Status } from './status';
 import { Commands } from './commands';
 import { InitialWallsProvider } from './initial_walls_provider';
 
+import { Stars } from './components/stars';
+import { RandomCoordinate } from './components/random_coordinate';
 
 function _applySizes() {
     var $gameBox = $('.game-box');
@@ -38,6 +41,19 @@ _(walls).each(function(wall) {
     });
 });
 
+var stars = new Stars();
+var starCircles = [];
+for (var i=0; i<20; i++) {
+    var coordinate = _getRandomFreeCoordinate();
+    if (coordinate) {
+        var circle = canvas.getPaper()
+            .circle(coordinate.x, coordinate.y, 0.75)
+            .attr('class', 'star');
+        stars.addAt(coordinate);
+        starCircles.push(circle);
+    }
+}
+
 function handleTick() {
     if (Commands.hasCommands()) {
         var command = Commands.popCommand();
@@ -59,19 +75,37 @@ function handleTick() {
     } else {
         snake.moveForward();
     }
-    snake.removeFromEnd();
     var head = snake.getHeadCoordinate();
-    if (wallCollisions.isCollisioning(head) || snake.isCollisioning(head)) {
+    if (_isCoordinateConCollisioning(head)) {
         Status.setFailed();
         $('body').off('clock:tick', handleTick);
         return;
     }
+
+    snake.removeFromEnd();
 
     _(snakePaths).each(function(snakePath) {
         snakePath
             .animate({'path': snake.getPath()}, 500);
     });
 }
+
+function _getRandomFreeCoordinate() {
+    var coordinate;
+    for (var i=0; i<1000; i++) {
+        coordinate = RandomCoordinate.getRandomIn(CONTENT_SIZE);
+        if (!_isCoordinateConCollisioning(coordinate) && !(_isCoordinateProCollisioning(coordinate))) {
+            return coordinate;
+        }
+    }
+}
+function _isCoordinateConCollisioning(coordinate) {
+    return wallCollisions.isCollisioning(coordinate) || snake.isCollisioning(coordinate);
+}
+function _isCoordinateProCollisioning(coordinate) {
+    return stars.isCollisioning(coordinate);
+}
+
 
 $('body').on('clock:tick', handleTick);
 
