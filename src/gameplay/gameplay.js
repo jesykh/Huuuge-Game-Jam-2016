@@ -81,8 +81,16 @@ function handleTick() {
         $('body').off('clock:tick', handleTick);
         return;
     }
-
-    snake.removeFromEnd();
+    var starIndex = stars.getIndex(head);
+    if (starIndex >= 0) {
+        $('body').trigger('score:up');
+        var starCircle = starCircles[starIndex];
+        starCircles.splice(starIndex, 1);
+        starCircle.remove();
+        stars.removeFrom(head);
+    } else {
+        snake.removeFromEnd();
+    }
 
     _(snakePaths).each(function(snakePath) {
         snakePath

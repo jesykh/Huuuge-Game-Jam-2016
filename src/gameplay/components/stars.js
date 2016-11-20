@@ -2,7 +2,6 @@ export function Stars(size, circle) {
   this._stars = [];
 }
 Stars.prototype.addAt = function(coordinate) {
-  if (!coordinate) {return;}
   this._stars.push(_(coordinate).clone());
 };
 Stars.prototype.removeFrom = function(coordinate) {
@@ -14,5 +13,5 @@ Stars.prototype.getIndex = function(coordinate) {
   return this._stars.indexOf(found);
 };
 Stars.prototype.isCollisioning = function(coordinate) {
-  return _(this._stars).any(coordinate);
+  return !!_(this._stars).find(coordinate);
 }
