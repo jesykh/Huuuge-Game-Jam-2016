@@ -122,9 +122,11 @@ function start() {
 
 function run() {
     var $endMenu = $('.end-menu');
-    $endMenu.hide();
     var $gameBox = $('.game-box');
-    console.info($endMenu);
+
+    var $instruction = $('#instruction');
+    var $splashScreen = $('#splash-screen');
+
     $('body').on('game:over', function() {
         $gameBox.hide();
         $endMenu.show();
@@ -135,7 +137,16 @@ function run() {
             require("electron").remote.app.quit();
         });
     });
-    start();
+
+    $endMenu.hide();
+
+    setTimeout(function() {
+        $splashScreen.hide();
+    }, 100)
+    setTimeout(function() {
+        $instruction.hide();
+        start();
+    }, 6000);
 }
 
 export var Gameplay = {
