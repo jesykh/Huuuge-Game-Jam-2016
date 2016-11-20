@@ -1,5 +1,5 @@
 import { Status } from './status';
-MAX_COMMANDS_COUNT = 3;
+var MAX_COMMANDS_COUNT = 3;
 
 
 export var Commands = {
