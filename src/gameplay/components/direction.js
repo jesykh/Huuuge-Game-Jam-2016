@@ -4,7 +4,7 @@ export function Direction(head, tail) {
 }
 
 Direction.prototype.isHeadingLeft = function() {
-  return this.isHeadingVertically() && (this._head.x < this._tail.x);
+  return this.isHeadingHorizontally() && (this._head.x < this._tail.x);
 };
 Direction.prototype.isHeadingTop = function() {
   return this.isHeadingVertically() && (this._head.y < this._tail.y);

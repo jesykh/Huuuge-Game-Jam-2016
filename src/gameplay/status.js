@@ -3,7 +3,6 @@ export var Status = {
     $('body').trigger('game:winner');
   },
   setFailed: function() {
-    console.info('you failed');
     alert('you failed');
     $('body').trigger('game:over');
   },

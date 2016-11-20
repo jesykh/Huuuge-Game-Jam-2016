@@ -16,8 +16,28 @@ export function Snake () {
   ];
 }
 Snake.prototype.isCollisioning = function(coordinate) {
-  throw 'unimplemented';
+  for (var i=0; i < this._coordinates.length - 2; i++) {
+    var a = this._coordinates[i];
+    var b = this._coordinates[i + 1];
+
+    var bigger, smaller;
+
+    if (coordinate.x === a.x) {
+      bigger = a.y > b.y ? a.y : b.y;
+      smaller = a.y > b.y ? a.y : b.y;
+
+      return (smaller <= coordinate.y) && (coordinate.y >= bigger);
+    }
+    if (coordinate.y === a.y) {
+      bigger = a.x > b.x ? a.x : b.x;
+      smaller = a.x > b.x ? a.x : b.x;
+
+      return (smaller <= coordinate.x) && (coordinate.x >= bigger);
+    }
+  }
+  return false;
 };
+
 Snake.prototype.getPath = function() {
   var first = this._coordinates[0];
   var nextOnes = this._coordinates.slice(1, this._coordinates.length);
@@ -42,6 +62,7 @@ Snake.prototype.removeFromEnd = function() {
 
 Snake.prototype.moveForward = function() {
   var head = this.getHeadCoordinate();
+
   switch (true) {
     case _isHeadingLeft.call(this):
       head.x = head.x - 1;
@@ -71,7 +92,6 @@ Snake.prototype.moveLeft = function() {
     x: headCoordinate.x - 1
   };
   this._coordinates.push(newHeadCoordinate);
-  this.removeFromEnd();
 };
 Snake.prototype.moveUp = function() {
   var headCoordinate = this.getHeadCoordinate();
@@ -86,7 +106,6 @@ Snake.prototype.moveUp = function() {
     y: headCoordinate.y - 1
   };
   this._coordinates.push(newHeadCoordinate);
-  this.removeFromEnd();
 };
 Snake.prototype.moveRight = function() {
   var headCoordinate = this.getHeadCoordinate();
@@ -101,7 +120,6 @@ Snake.prototype.moveRight = function() {
     x: headCoordinate.x + 1
   };
   this._coordinates.push(newHeadCoordinate);
-  this.removeFromEnd();
 };
 Snake.prototype.moveDown = function() {
   var headCoordinate = this.getHeadCoordinate();
@@ -116,10 +134,6 @@ Snake.prototype.moveDown = function() {
     y: headCoordinate.y + 1
   };
   this._coordinates.push(newHeadCoordinate);
-  this.removeFromEnd();
-}
-Snake.prototype.moveDown = function() {
-  this.removeFromEnd();
 }
 Snake.prototype.getHeadCoordinate = function() {
   return this._coordinates[this._coordinates.length - 1];

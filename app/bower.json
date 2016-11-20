@@ -3,6 +3,7 @@
   "dependencies": {
     "raphael": "*",
     "jquery": "3.1.*",
-    "underscore": "1.8.*"
+    "underscore": "1.8.*",
+    "annyang": "*"
   }
 }
