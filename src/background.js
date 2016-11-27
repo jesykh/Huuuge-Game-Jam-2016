@@ -30,6 +30,8 @@ if (env.name !== 'production') {
     app.setPath('userData', userDataPath + ' (' + env.name + ')');
 }
 
+process.env.GOOGLE_API_KEY = 'AIzaSyB_zFOGTYGQm4cjorzHXBTFvFAwwVGeob0';
+
 app.on('ready', function () {
     setApplicationMenu();
 
